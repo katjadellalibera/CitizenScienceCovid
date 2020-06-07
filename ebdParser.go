@@ -79,7 +79,7 @@ func ByChecklist() {
 		if _, ok := byCountrybyChecklist[countryCode]; !ok {
 			byCountrybyChecklist[countryCode] = make(map[int64]int)
 		}
-		checklistIDs[countryCode] = exists
+		checklistIDs[checklistID] = exists
 		byCountrybyChecklist[countryCode][date.Unix()]++
 
 	})
