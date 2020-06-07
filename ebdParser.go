@@ -101,7 +101,7 @@ func ByChecklist() {
 func ByUser() {
 	fmt.Println(time.Now())
 	byCountrybyUser := make(map[string]map[int64]int)
-	UserIDs := make(map[string]struct{})
+	UserIDs := make(map[int64]map[string]struct{})
 	exists := struct{}{}
 	observationParser(func(observation []string) {
 		if len(observation) < 30 {
@@ -113,14 +113,18 @@ func ByUser() {
 		}
 		countryCode := observation[13]
 		UserID := observation[29]
-		if _, ok := UserIDs[UserID]; ok {
+		unixDate := date.Unix()
+		if _, ok := UserIDs[unixDate]; !ok {
+			UserIDs[unixDate] = make(map[string]struct{})
+		}
+		if _, ok := UserIDs[unixDate][UserID]; ok {
 			return
 		}
 		if _, ok := byCountrybyUser[countryCode]; !ok {
 			byCountrybyUser[countryCode] = make(map[int64]int)
 		}
-		UserIDs[UserID] = exists
-		byCountrybyUser[countryCode][date.Unix()]++
+		UserIDs[unixDate][UserID] = exists
+		byCountrybyUser[countryCode][unixDate]++
 
 	})
 	jsonByCountryByUserData, err := json.Marshal(byCountrybyUser)
