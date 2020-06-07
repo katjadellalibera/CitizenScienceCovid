@@ -57,7 +57,48 @@ func observationParser(f func([]string)) {
 	}
 }
 
-func main() {
+// ByChecklist counts checklists per country per day
+func ByChecklist() {
+	fmt.Println(time.Now())
+	byCountrybyChecklist := make(map[string]map[int64]int)
+	checklistIDs := make(map[string]struct{})
+	exists := struct{}{}
+	observationParser(func(observation []string) {
+		if len(observation) < 30 {
+			return
+		}
+		date, err := time.Parse("2006-01-02", observation[27])
+		if err != nil {
+			return
+		}
+		countryCode := observation[13]
+		checklistID := observation[30]
+		if _, ok := checklistIDs[checklistID]; ok {
+			return
+		}
+		if _, ok := byCountrybyChecklist[countryCode]; !ok {
+			byCountrybyChecklist[countryCode] = make(map[int64]int)
+		}
+		checklistIDs[countryCode] = exists
+		byCountrybyChecklist[countryCode][date.Unix()]++
+
+	})
+	jsonByCountryByChecklistData, err := json.Marshal(byCountrybyChecklist)
+	if err != nil {
+		panic(err)
+	}
+	jsonByCountryByChecklistFile, err := os.Create(strings.Join([]string{outputDirectory, "byCountryByChecklist.json"}, "/"))
+	if err != nil {
+		panic(err)
+	}
+	defer jsonByCountryByChecklistFile.Close()
+
+	jsonByCountryByChecklistFile.Write(jsonByCountryByChecklistData)
+	fmt.Println(time.Now())
+}
+
+// ByObservation counts observations per country per day
+func ByObservation() {
 	fmt.Println(time.Now())
 	byCountry := make(map[string]map[int64]int)
 	observationParser(func(observation []string) {
@@ -87,4 +128,8 @@ func main() {
 
 	jsonByCountryFile.Write(jsonByCountryData)
 	fmt.Println(time.Now())
+}
+
+func main() {
+	ByChecklist()
 }
