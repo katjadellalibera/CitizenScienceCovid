@@ -97,6 +97,46 @@ func ByChecklist() {
 	fmt.Println(time.Now())
 }
 
+// ByUser counts distinct users per country per day
+func ByUser() {
+	fmt.Println(time.Now())
+	byCountrybyUser := make(map[string]map[int64]int)
+	UserIDs := make(map[string]struct{})
+	exists := struct{}{}
+	observationParser(func(observation []string) {
+		if len(observation) < 30 {
+			return
+		}
+		date, err := time.Parse("2006-01-02", observation[27])
+		if err != nil {
+			return
+		}
+		countryCode := observation[13]
+		UserID := observation[29]
+		if _, ok := UserIDs[UserID]; ok {
+			return
+		}
+		if _, ok := byCountrybyUser[countryCode]; !ok {
+			byCountrybyUser[countryCode] = make(map[int64]int)
+		}
+		UserIDs[UserID] = exists
+		byCountrybyUser[countryCode][date.Unix()]++
+
+	})
+	jsonByCountryByUserData, err := json.Marshal(byCountrybyUser)
+	if err != nil {
+		panic(err)
+	}
+	jsonByCountryByUserFile, err := os.Create(strings.Join([]string{outputDirectory, "byCountryByUser.json"}, "/"))
+	if err != nil {
+		panic(err)
+	}
+	defer jsonByCountryByUserFile.Close()
+
+	jsonByCountryByUserFile.Write(jsonByCountryByUserData)
+	fmt.Println(time.Now())
+}
+
 // ByObservation counts observations per country per day
 func ByObservation() {
 	fmt.Println(time.Now())
@@ -131,5 +171,5 @@ func ByObservation() {
 }
 
 func main() {
-	ByChecklist()
+	ByUser()
 }
