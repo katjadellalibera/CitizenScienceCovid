@@ -217,5 +217,5 @@ func ByObservation() {
 }
 
 func main() {
-	ByUser()
+	ByUserByMonth()
 }
