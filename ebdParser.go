@@ -141,6 +141,48 @@ func ByUser() {
 	fmt.Println(time.Now())
 }
 
+// ByUserByMonth counts distinct users globally per day
+func ByUserByMonth() {
+	fmt.Println(time.Now())
+	byUserByMonth := make(map[int64]int)
+	UserIDs := make(map[int64]map[string]struct{})
+	exists := struct{}{}
+	observationParser(func(observation []string) {
+		if len(observation) < 30 {
+			return
+		}
+		date, err := time.Parse("2006-01-02", observation[27])
+		if err != nil {
+			return
+		}
+		UserID := observation[29]
+		month := time.Date(date.Year(), date.Month(), 1, 1, 1, 1, 1, date.Location())
+		unixMonth := month.Unix()
+		if _, ok := UserIDs[unixMonth]; !ok {
+			UserIDs[unixMonth] = make(map[string]struct{})
+		}
+		if _, ok := UserIDs[unixMonth][UserID]; ok {
+			return
+		}
+
+		UserIDs[unixMonth][UserID] = exists
+		byUserByMonth[unixMonth]++
+
+	})
+	jsonByUserByMonthData, err := json.Marshal(byUserByMonth)
+	if err != nil {
+		panic(err)
+	}
+	jsonByUserByMonthFile, err := os.Create(strings.Join([]string{outputDirectory, "byUserByMonth.json"}, "/"))
+	if err != nil {
+		panic(err)
+	}
+	defer jsonByUserByMonthFile.Close()
+
+	jsonByUserByMonthFile.Write(jsonByUserByMonthData)
+	fmt.Println(time.Now())
+}
+
 // ByObservation counts observations per country per day
 func ByObservation() {
 	fmt.Println(time.Now())
