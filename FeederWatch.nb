@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     83937,       2035]
-NotebookOptionsPosition[     82049,       1995]
-NotebookOutlinePosition[     82445,       2011]
-CellTagsIndexPosition[     82402,       2008]
+NotebookDataLength[     84273,       2041]
+NotebookOptionsPosition[     82385,       2001]
+NotebookOutlinePosition[     82781,       2017]
+CellTagsIndexPosition[     82738,       2014]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1253,32 +1253,32 @@ Cell[BoxData[
         RowBox[{"y", ",", "2", ",", "7"}], "}"}]}], "]"}], ",", 
      RowBox[{"{", 
       RowBox[{"x", ",", "2", ",", "5"}], "}"}]}], "]"}], ",", 
-   RowBox[{"Ticks", "->", 
+   RowBox[{"FrameTicks", "->", 
+    RowBox[{"{", 
+     RowBox[{"Automatic", ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"1", ",", "\"\<Nov\>\""}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"2", ",", "\"\<Dec\>\""}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"3", ",", "\"\<Jan\>\""}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"4", ",", "\"\<Feb\>\""}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"5", ",", "\"\<Mar\>\""}], "}"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"6", ",", "\"\<Apr\>\""}], "}"}]}], "}"}], ",", "None"}], 
+       "}"}]}], "}"}]}], ",", 
+   RowBox[{"FrameLabel", "\[Rule]", 
     RowBox[{"{", 
      RowBox[{
-      RowBox[{"{", 
-       RowBox[{
-        RowBox[{"{", 
-         RowBox[{"1", ",", "\"\<Nov\>\""}], "}"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"2", ",", "\"\<Dec\>\""}], "}"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"3", ",", "\"\<Jan\>\""}], "}"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"4", ",", "\"\<Feb\>\""}], "}"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"5", ",", "\"\<Mar\>\""}], "}"}], ",", 
-        RowBox[{"{", 
-         RowBox[{"6", ",", "\"\<Apr\>\""}], "}"}]}], "}"}], ",", " ", 
-      "Automatic"}], "}"}]}], ",", 
-   RowBox[{"(*", 
-    RowBox[{
-     RowBox[{"FrameLabel", "\[Rule]", 
-      RowBox[{"{", 
-       RowBox[{
-       "\"\<\>\"", ",", "\"\<weekly Project FeederWatch submissions\>\""}], 
-       "}"}]}], ",", 
-     RowBox[{"Frame", "\[Rule]", "True"}], ","}], "*)"}], 
+     "\"\<\>\"", ",", "\"\<weekly Project FeederWatch submissions\>\""}], 
+     "}"}]}], ",", 
+   RowBox[{"Frame", "\[Rule]", "True"}], ",", 
    RowBox[{"PlotLegends", "\[Rule]", 
     RowBox[{"LineLegend", "[", 
      RowBox[{
@@ -1295,9 +1295,10 @@ Cell[BoxData[
    RowBox[{"PlotRange", "\[Rule]", "All"}]}], "]"}]], "Input",
  CellChangeTimes->{{3.802446879070912*^9, 3.802446895961637*^9}, {
   3.8024469668184843`*^9, 3.8024470650085487`*^9}, {3.802447112504457*^9, 
-  3.802447153089828*^9}},
+  3.802447153089828*^9}, {3.8024549533004513`*^9, 3.802454976624955*^9}, {
+  3.8024550290431147`*^9, 3.802455114507807*^9}},
  CellLabel->
-  "In[155]:=",ExpressionUUID->"2d35112c-ff79-44ba-b5c8-6d74045921e4"],
+  "In[164]:=",ExpressionUUID->"2d35112c-ff79-44ba-b5c8-6d74045921e4"],
 
 Cell[BoxData[
  TemplateBox[{
@@ -1505,9 +1506,19 @@ Cell[BoxData[
     DisplayFunction -> Identity, DisplayFunction -> Identity, AspectRatio -> 
      NCache[GoldenRatio^(-1), 0.6180339887498948], Axes -> {True, True}, 
      AxesLabel -> {None, None}, AxesOrigin -> {0.8958333333333336, 0}, 
-     DisplayFunction :> Identity, Frame -> {{False, False}, {False, False}}, 
-     FrameLabel -> {{None, None}, {None, None}}, 
-     FrameTicks -> {{Automatic, Automatic}, {Automatic, Automatic}}, 
+     DisplayFunction :> Identity, Frame -> {{True, True}, {True, True}}, 
+     FrameLabel -> {{
+        FormBox[
+        "\"weekly Project FeederWatch submissions\"", TraditionalForm], 
+        None}, {
+        FormBox["\"\"", TraditionalForm], None}}, 
+     FrameTicks -> {{Automatic, Automatic}, {{{1, 
+          FormBox["\"Nov\"", TraditionalForm]}, {2, 
+          FormBox["\"Dec\"", TraditionalForm]}, {3, 
+          FormBox["\"Jan\"", TraditionalForm]}, {4, 
+          FormBox["\"Feb\"", TraditionalForm]}, {5, 
+          FormBox["\"Mar\"", TraditionalForm]}, {6, 
+          FormBox["\"Apr\"", TraditionalForm]}}, None}}, 
      GridLines -> {None, None}, GridLinesStyle -> Directive[
        GrayLevel[0.5, 0.4]], 
      LabelStyle -> {FontFamily -> "Helvetica", FontSize -> 14}, 
@@ -1527,13 +1538,7 @@ Cell[BoxData[
         Scaled[0.02], 
         Scaled[0.02]}, {
         Scaled[0.02], 
-        Scaled[0.05]}}, Ticks -> {{{1, 
-         FormBox["\"Nov\"", TraditionalForm]}, {2, 
-         FormBox["\"Dec\"", TraditionalForm]}, {3, 
-         FormBox["\"Jan\"", TraditionalForm]}, {4, 
-         FormBox["\"Feb\"", TraditionalForm]}, {5, 
-         FormBox["\"Mar\"", TraditionalForm]}, {6, 
-         FormBox["\"Apr\"", TraditionalForm]}}, Automatic}}], 
+        Scaled[0.05]}}, Ticks -> {Automatic, Automatic}}], 
    FormBox[
     FormBox[
      TemplateBox[{"\"2017\"", "\"2018\"", "\"2019\"", "\"2020\""}, 
@@ -1986,9 +1991,10 @@ Cell[BoxData[
  CellChangeTimes->{
   3.802446896674262*^9, 3.802446970064262*^9, {3.8024470002707863`*^9, 
    3.802447009790326*^9}, {3.802447040845731*^9, 3.802447059702222*^9}, 
-   3.802447118151452*^9, 3.8024471538203297`*^9},
- CellLabel->
-  "Out[155]=",ExpressionUUID->"8fa670b8-bf93-4250-9b60-bfa9eaa98de8"]
+   3.802447118151452*^9, 3.8024471538203297`*^9, {3.802454958639258*^9, 
+   3.802454977852384*^9}, {3.802455043154841*^9, 
+   3.8024551149266577`*^9}},ExpressionUUID->"edc312f3-28c0-41f9-b6ce-\
+db1f8a55e852"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
@@ -2032,8 +2038,8 @@ Cell[17939, 479, 2416, 61, 73, "Input",ExpressionUUID->"df7e4e36-7427-4cef-ae3a-
 Cell[20358, 542, 29777, 693, 296, "Output",ExpressionUUID->"62600975-1bc3-4dd9-8d5a-a65cc06f3ea3"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[50172, 1240, 2205, 59, 73, "Input",ExpressionUUID->"2d35112c-ff79-44ba-b5c8-6d74045921e4"],
-Cell[52380, 1301, 29629, 689, 335, "Output",ExpressionUUID->"8fa670b8-bf93-4250-9b60-bfa9eaa98de8"]
+Cell[50172, 1240, 2338, 60, 94, "Input",ExpressionUUID->"2d35112c-ff79-44ba-b5c8-6d74045921e4"],
+Cell[52513, 1302, 29832, 694, 363, "Output",ExpressionUUID->"edc312f3-28c0-41f9-b6ce-db1f8a55e852"]
 }, Open  ]]
 }, Open  ]]
 }, Open  ]]
